@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "PortfolioContent": {
+      "title": "PortfolioContent",
+      "description": "Comprehensive portfolio document storing profile, story stages, projects, skills, certifications, and experience",
+      "type": "object",
+      "properties": {
+        "profile": {
+          "type": "object",
+          "description": "Developer profile and SEO metadata"
+        },
+        "storyStages": {
+          "type": "array",
+          "description": "Interactive storytelling stages"
+        },
+        "projects": {
+          "type": "array",
+          "description": "Featured engineering projects and live systems"
+        },
+        "certifications": {
+          "type": "array",
+          "description": "Technical certifications and achievements"
+        },
+        "skills": {
+          "type": "array",
+          "description": "Categorized technical skill stack"
+        },
+        "experience": {
+          "type": "array",
+          "description": "Professional experience and internship history"
+        }
+      }
+    },
+    "TestConnection": {
+      "title": "TestConnection",
+      "description": "Health check document used to verify Firestore connectivity status",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Status message"
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/portfolio/{docId}": {
+      "schema": "PortfolioContent",
+      "description": "Portfolio content document storing custom portfolio data"
+    },
+    "/test/{docId}": {
+      "schema": "TestConnection",
+      "description": "Health check document for verifying Firestore connectivity"
+    }
+  }
+}

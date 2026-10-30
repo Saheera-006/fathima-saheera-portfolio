@@ -1,0 +1,307 @@
+
+@import "tailwindcss";
+
+/* =========================================
+   MIDNIGHT BLUE — GLOBAL COLOUR FOUNDATION
+========================================= */
+
+:root {
+  color-scheme: dark;
+
+  --color-background: #070A12;
+  --color-background-secondary: #0B1428;
+  --color-surface: #101B30;
+  --color-surface-hover: #142B50;
+
+  --color-primary: #2563EB;
+  --color-primary-light: #60A5FA;
+  --color-primary-glow: rgba(37, 99, 235, 0.18);
+
+  --color-text-primary: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+
+  --color-border: rgba(96, 165, 250, 0.14);
+}
+
+/* =========================================
+   BASE STYLES
+========================================= */
+
+@layer base {
+  html {
+    background: var(--color-background);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system,
+      BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, sans-serif;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular,
+      Menlo, Monaco, Consolas, monospace;
+  }
+
+  ::selection {
+    background: rgba(37, 99, 235, 0.35);
+    color: #FFFFFF;
+  }
+
+  /* Custom Midnight Blue scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #070A12;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.25);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.55);
+  }
+}
+
+/* =========================================
+   HERO — RESPONSIVE GUTTERS
+========================================= */
+
+#hero.hero-section {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  padding-left: max(1.5rem, calc((100vw - 80rem) / 2));
+  padding-right: max(1.5rem, calc((100vw - 80rem) / 2));
+
+  justify-content: flex-start !important;
+  overflow: hidden;
+}
+
+/* =========================================
+   HERO — MAIN CONTENT LAYOUT
+========================================= */
+
+#hero .hero-content {
+  position: relative;
+  z-index: 10;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+  align-items: center;
+
+  width: 100% !important;
+  max-width: 80rem !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  column-gap: clamp(2rem, 5vw, 5rem);
+}
+
+/* Left identity section */
+
+#hero .hero-copy {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0;
+  margin-left: 0 !important;
+}
+
+/* Oversized name — prevent unwanted clipping */
+
+#hero #hero-name-title {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+  white-space: normal;
+}
+
+/* Right introduction */
+
+#hero .hero-content > :last-child {
+  min-width: 0;
+}
+
+/* =========================================
+   HERO — CINEMATIC LIGHT STREAKS
+========================================= */
+
+#hero::before {
+  content: "";
+  position: absolute;
+
+  top: -135px;
+  left: -8%;
+
+  width: 100%;
+  height: 230px;
+
+  border-top: 1.5px solid rgba(37, 99, 235, 0.85);
+  border-radius: 50%;
+
+  transform: rotate(-8deg);
+
+  box-shadow:
+    0 -5px 18px rgba(37, 99, 235, 0.12),
+    0 -1px 5px rgba(96, 165, 250, 0.12);
+
+  background: transparent;
+
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.65) 65%,
+    transparent
+  );
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+
+  bottom: -235px;
+  left: -12%;
+
+  width: 125%;
+  height: 390px;
+
+  border-top: 1.5px solid rgba(37, 99, 235, 0.8);
+  border-radius: 50%;
+
+  transform: rotate(-7deg);
+
+  box-shadow:
+    0 -4px 18px rgba(37, 99, 235, 0.14),
+    0 -1px 5px rgba(96, 165, 250, 0.2);
+
+  background: transparent;
+
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.65) 55%,
+    transparent
+  );
+}
+
+/* =========================================
+   HERO — SUBTLE NAME GLOW
+========================================= */
+
+#hero #hero-name-title span {
+  filter: drop-shadow(0 4px 22px rgba(37, 99, 235, 0.12));
+}
+
+/* =========================================
+   HERO — TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 1023px) {
+  #hero .hero-content {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 3rem;
+  }
+
+  #hero .hero-copy {
+    max-width: 100% !important;
+  }
+
+  #hero .hero-content > :last-child {
+    justify-self: start;
+    width: 100%;
+    max-width: 620px;
+    margin-top: 0;
+  }
+}
+
+/* =========================================
+   HERO — MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 640px) {
+  #hero.hero-section {
+    min-height: 100svh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+  }
+
+  #hero .hero-content {
+    row-gap: 2.5rem;
+  }
+
+  #hero .hero-copy {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #hero #hero-name-title {
+    font-size: clamp(3.3rem, 14vw, 5.5rem);
+    letter-spacing: -0.065em;
+    line-height: 0.88;
+  }
+
+  #hero .hero-content > :last-child {
+    max-width: 100%;
+  }
+
+  #hero::before {
+    top: -155px;
+    left: -25%;
+    width: 135%;
+  }
+
+  #hero::after {
+    bottom: -280px;
+    left: -25%;
+    width: 150%;
+  }
+}
+
+/* =========================================
+   HERO — SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  #hero #hero-name-title {
+    font-size: clamp(2.9rem, 13.5vw, 3.5rem);
+  }
+
+  #hero .hero-copy {
+    gap: 1.25rem;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
